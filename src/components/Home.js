@@ -1,9 +1,10 @@
 import React from 'react'
+import Styled from 'styled-components'
 import Section from './Section'
 
 function Home() {
   return (
-    <div>
+    <Container>
       <Section
         title="Model S"
         description="Order Online for Touchless Delivery"
@@ -32,8 +33,30 @@ function Home() {
         rightBtnText="existing inventory"
         img="model-x.jpg"
       />
-    </div>
+      <Section
+        title="Lowest Cost Solar Panels in America"
+        description="Money-back gaurantee"
+        leftBtnText="Order Now"
+        rightBtnText="Learn more"
+        img="solar-panel.jpg"
+      />
+      <Section
+        title="Sloar for New Roofs"
+        description="Solar Roof Costs Less Than a New Roof"
+        leftBtnText="Order now"
+        rightBtnText="Learn more"
+        img="solar-roof.jpg"
+      />
+      <Section
+        title="Accessories"
+        description=""
+        leftBtnText="Shop now"
+        img="accessories.jpg"
+      />
+    </Container>
   )
 }
 
 export default Home
+
+const Container = Styled.div``
