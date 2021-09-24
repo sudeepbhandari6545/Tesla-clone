@@ -13,17 +13,10 @@ function Header() {
       <a>
         <img src="/images/logo.svg" />
       </a>
-      <Menu>
-        {cars &&
-          cars.map((car, index) => (
-            <a key={index} href="/">
-              {car}
-            </a>
-          ))}
-      </Menu>
+      <Menu>{cars && cars.map((car, index) => <a key={index}>{car}</a>)}</Menu>
       <RightMenu>
-        <a href="">shop</a>
-        <a href="">tesla account</a>
+        <a>shop</a>
+        <a>tesla account</a>
         <CustomIcon onClick={() => setOpenItem(true)} />
       </RightMenu>
       <BurgerMenu show={openItem}>
