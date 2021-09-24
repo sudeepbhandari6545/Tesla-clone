@@ -16,7 +16,7 @@ function Header() {
       <Menu>
         {cars &&
           cars.map((car, index) => (
-            <a key={index} href="#">
+            <a key={index} href="/">
               {car}
             </a>
           ))}
@@ -33,26 +33,26 @@ function Header() {
         {cars &&
           cars.map((car, index) => (
             <li>
-              <a key={index} href="#">
+              <a key={index} href="/">
                 {car}
               </a>
             </li>
           ))}
 
         <li>
-          <a href="#">Existing Inventory</a>
+          <a href="/">Existing Inventory</a>
         </li>
         <li>
-          <a href="#">Used Inventory</a>
+          <a href="/">Used Inventory</a>
         </li>
         <li>
-          <a href="#">Trade-In</a>
+          <a href="/">Trade-In</a>
         </li>
         <li>
-          <a href="#">Cybertruck</a>
+          <a href="/">Cybertruck</a>
         </li>
         <li>
-          <a href="#">Roadaster</a>
+          <a href="/">Roadaster</a>
         </li>
       </BurgerMenu>
     </Container>
