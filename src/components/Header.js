@@ -2,53 +2,57 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
+import { selectCars } from '../features/car/carSlice'
+import { useSelector } from 'react-redux'
 
 function Header() {
-  const [closeItem, setCloseItem] = useState('')
-
-  const closeBurger = () => {
-    setCloseItem('')
-    alert('close')
-  }
-
+  const [openItem, setOpenItem] = useState(false)
+  const cars = useSelector(selectCars)
   return (
     <Container>
       <a>
         <img src="/images/logo.svg" />
       </a>
       <Menu>
-        <a href="#">Model S</a>
-
-        <a href="#">Model 3</a>
-
-        <a href="#">Model X</a>
-
-        <a href="#">Model Y</a>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="#">
+              {car}
+            </a>
+          ))}
       </Menu>
       <RightMenu>
         <a href="">shop</a>
         <a href="">tesla account</a>
-        <CustomIcon />
+        <CustomIcon onClick={() => setOpenItem(true)} />
       </RightMenu>
-      <BurgerMenu>
+      <BurgerMenu show={openItem}>
         <CloseWrapper>
-          <CustomClose onClick={closeBurger} />
+          <CustomClose onClick={() => setOpenItem(false)} />
         </CloseWrapper>
+        {cars &&
+          cars.map((car, index) => (
+            <li>
+              <a key={index} href="#">
+                {car}
+              </a>
+            </li>
+          ))}
 
         <li>
-          <a href="#">home</a>{' '}
+          <a href="#">Existing Inventory</a>
         </li>
         <li>
-          <a href="#">home</a>{' '}
+          <a href="#">Used Inventory</a>
         </li>
         <li>
-          <a href="#">home</a>{' '}
+          <a href="#">Trade-In</a>
         </li>
         <li>
-          <a href="#">home</a>{' '}
+          <a href="#">Cybertruck</a>
         </li>
         <li>
-          <a href="#">home</a>{' '}
+          <a href="#">Roadaster</a>
         </li>
       </BurgerMenu>
     </Container>
@@ -106,12 +110,15 @@ const BurgerMenu = styled.div`
   bottom: 0;
   background: white;
   width: 300px;
-  z-index: 10;
+  z-index: 16;
   align-items: center;
+  flex-direction: column;
   list-style: none;
   padding: 20px;
   align-items: center;
   justify-content: center;
+  transform: ${(props) => (props.show ? 'translateX(0)' : 'translateX(100%)')};
+  transition: transform 0.4s ease-in;
   li {
     border-bottom: 1px solid gray;
     padding: 15px 0;
